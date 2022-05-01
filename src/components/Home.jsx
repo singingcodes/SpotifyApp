@@ -1,16 +1,17 @@
 import MySideBar from "./MySideBar"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import MyPlayer from "./MyPlayer"
 
 const Home = () => {
   const [songs, setSongs] = useState([])
   useEffect(() => {
-    fetchData()
+    fetchData("queen")
   }, [])
-  const fetchData = async () => {
+  const fetchData = async (query) => {
     try {
       const res = await fetch(
-        "https://striveschool-api.herokuapp.com/api/deezer/search?q=queen"
+        "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + query
       )
       if (res.ok) {
         const songs = await res.json()
@@ -66,13 +67,16 @@ const Home = () => {
                     flexDirection: "column",
                   }}
                 >
-                  <img
-                    className="img-fluid"
-                    src={song.album.cover_small}
-                    alt="album"
-                    style={{ width: "100%" }}
-                  />
-                  <span
+                  <Link to={"/album/" + song.album.id}>
+                    <img
+                      className="img-fluid"
+                      src={song.album.cover_small}
+                      alt="album"
+                      style={{ width: "100%" }}
+                    />
+                  </Link>
+                  <Link
+                    to={"/artist/" + song.artist.id}
                     style={{
                       display: "flex",
                       justifyContent: "center",
@@ -84,7 +88,7 @@ const Home = () => {
                     }}
                   >
                     {song.artist.name}
-                  </span>
+                  </Link>
                 </div>
               ))}
             </div>

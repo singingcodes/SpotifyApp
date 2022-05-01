@@ -1,4 +1,5 @@
 // import { Nav, Button } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 const MySideBar = () => {
   return (
@@ -23,20 +24,15 @@ const MySideBar = () => {
             >
               <path d="M12.97 2.59a1.5 1.5 0 00-1.94 0l-7.5 6.363A1.5 1.5 0 003 10.097V19.5A1.5 1.5 0 004.5 21h4.75a.75.75 0 00.75-.75V14h4v6.25c0 .414.336.75.75.75h4.75a1.5 1.5 0 001.5-1.5v-9.403a1.5 1.5 0 00-.53-1.144l-7.5-6.363z" />
             </svg>
-            <span className="text-white">Home</span>
+            <Link to={"/"} style={{ color: "white", textDecoration: "none" }}>
+              Home
+            </Link>
           </li>
           <li className="mt-3 text-muted">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="26"
-              height="26"
-              fill="white"
-              fillRule="evenodd"
-            >
-              <path d="M14.53 15.59a8.25 8.25 0 111.06-1.06l5.69 5.69a.75.75 0 11-1.06 1.06l-5.69-5.69zM2.5 9.25a6.75 6.75 0 1111.74 4.547.746.746 0 00-.443.442A6.75 6.75 0 012.5 9.25z"></path>
-            </svg>
-            <span className="text-muted">Search</span>
+            <i class="bi bi-search" style={{ width: "28", height: "28" }}>
+              {" "}
+              <span className="text-muted">Search</span>
+            </i>
           </li>
           <li className="mt-3">
             <img
